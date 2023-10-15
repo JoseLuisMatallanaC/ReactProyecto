@@ -2,7 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './../App.css';
 import Modal from './Modal';
-
+import { BrowserRouter,Routes,Route,Link } from 'react-router-dom';
+import Home from '../pages/HomePage';
 export const mensajeLogin = 'Inicio de Sesión';
 export const mensajeCart = 'Mi Carrito';
 export const idModalLogin = 'idModalLogin';
@@ -21,22 +22,21 @@ function NavBar(){
                 </button>
                 <div className="collapse navbar-collapse" id="navbars">
                     <ul className="navbar-nav me-auto mb-2 mb-sm-0">
-                        <li className="nav-item">
-                            <a className="nav-link active" aria-current="page" href="#">Inicio</a>
-                        </li>                        
+                        <Link className="nav-item nav-link active li" to="/">Home</Link>                  
                         <li className="nav-item dropdown">
                             <a className="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" 
                                 aria-expanded="false">Productos</a>
-                            <ul className="dropdown-menu">
-                                <li><a className="dropdown-item" href="#">Hogar</a></li>
-                                <li><a className="dropdown-item" href="#">Tecnología</a></li>
-                                <li><a className="dropdown-item" href="#">Deportes</a></li>
+                            <ul className="dropdown-menu nav-ul">
+                                <Link className="dropdown-item li" to="/">Home</Link>
+                                <Link className="dropdown-item li" 
+                                    to="/category/smartphones">Smartphones</Link>
+                                <Link className="dropdown-item li" 
+                                    to="/category/laptops">Laptops</Link>
+                                <Link className="dropdown-item li" 
+                                    to="/category/fragrances">Fragancias</Link>
                             </ul>
                         </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="#">Acerca de Nosotros</a>
-                        </li>
-                    </ul>
+                    </ul>                    
                     <form id='formBusqueda' role="search">
                         <input className="form-control" type="search" placeholder="Buscar" 
                             aria-label="Search"/>                        
@@ -49,9 +49,10 @@ function NavBar(){
                         className="btn" data-bs-toggle="modal" data-bs-target="#idModalCart"/>
                     <Modal id={idModalCart} mensajeHeader={mensajeCart}/>
                     <div id='divModal'></div>
-                </div>                
-            </div>
+                </div>                 
+            </div> 
         </nav>
     );
 }
+
 export default NavBar;
